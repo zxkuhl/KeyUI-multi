@@ -1,0 +1,69 @@
+-- Executor GUI Selector
+-- made for zxkuhl
+
+-- destroy old gui if re-executed
+pcall(function()
+    if game.CoreGui:FindFirstChild("GUI_SELECTOR") then
+        game.CoreGui.GUI_SELECTOR:Destroy()
+    end
+end)
+
+-- create ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "GUI_SELECTOR"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Parent = game.CoreGui
+
+-- main frame
+local Main = Instance.new("Frame")
+Main.Parent = ScreenGui
+Main.Size = UDim2.new(0, 420, 0, 220)
+Main.Position = UDim2.new(0.5, -210, 0.5, -110)
+Main.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Main.BorderSizePixel = 0
+Main.Active = true
+Main.Draggable = true
+
+-- corner
+local UICorner = Instance.new("UICorner", Main)
+UICorner.CornerRadius = UDim.new(0, 10)
+
+-- title
+local Title = Instance.new("TextLabel")
+Title.Parent = Main
+Title.Size = UDim2.new(1, -20, 0, 50)
+Title.Position = UDim2.new(0, 10, 0, 10)
+Title.BackgroundTransparency = 1
+Title.Text = "CHOSE A GUI"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 26
+Title.TextXAlignment = Enum.TextXAlignment.Center
+
+-- button
+local Button = Instance.new("TextButton")
+Button.Parent = Main
+Button.Size = UDim2.new(1, -40, 0, 60)
+Button.Position = UDim2.new(0, 20, 0, 90)
+Button.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
+Button.Text = "zxkuhl’s gui1 requires owner on free admin"
+Button.TextWrapped = true
+Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+Button.Font = Enum.Font.Gotham
+Button.TextSize = 16
+Button.BorderSizePixel = 0
+Button.AutoButtonColor = true
+
+local ButtonCorner = Instance.new("UICorner", Button)
+ButtonCorner.CornerRadius = UDim.new(0, 8)
+
+-- button click logic
+Button.MouseButton1Click:Connect(function()
+    -- destroy selector UI
+    ScreenGui:Destroy()
+
+    -- load your GUI
+    loadstring(game:HttpGet(
+        "https://raw.githubusercontent.com/zxkuhl/KeyUI-multi/refs/heads/main/zxkuhl’s%20GUI%201"
+    ))()
+end)
