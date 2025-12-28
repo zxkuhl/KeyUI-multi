@@ -1,0 +1,125 @@
+
+-- Create ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "zxkuhl's keys"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.Parent = game.CoreGui
+
+-- Main Frame
+local KeyFrame = Instance.new("Frame")
+KeyFrame.Name = "KeyFrame"
+KeyFrame.Size = UDim2.new(0, 380, 0, 240)
+KeyFrame.Position = UDim2.new(0.5, -190, 0.5, -120)
+KeyFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 28)
+KeyFrame.BorderSizePixel = 0
+KeyFrame.Parent = ScreenGui
+
+local KeyFrameStroke = Instance.new("UIStroke")
+KeyFrameStroke.Color = Color3.fromRGB(138, 43, 226)
+KeyFrameStroke.Thickness = 2
+KeyFrameStroke.Parent = KeyFrame
+
+local KeyUICorner = Instance.new("UICorner")
+KeyUICorner.CornerRadius = UDim.new(0, 18)
+KeyUICorner.Parent = KeyFrame
+
+-- Title
+local KeyTitle = Instance.new("TextLabel")
+KeyTitle.Size = UDim2.new(1, -40, 0, 50)
+KeyTitle.Position = UDim2.new(0, 20, 0, 15)
+KeyTitle.BackgroundTransparency = 1
+KeyTitle.Text = "🔐 zxkuhl's gui Key System"
+KeyTitle.Font = Enum.Font.GothamBold
+KeyTitle.TextSize = 24
+KeyTitle.TextColor3 = Color3.fromRGB(200, 120, 255)
+KeyTitle.TextXAlignment = Enum.TextXAlignment.Left
+KeyTitle.Parent = KeyFrame
+
+local KeyTitleGradient = Instance.new("UIGradient")
+KeyTitleGradient.Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(138, 43, 226)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(200, 120, 255))
+}
+KeyTitleGradient.Rotation = 45
+KeyTitleGradient.Parent = KeyTitle
+
+-- Note
+local KeyNote = Instance.new("TextLabel")
+KeyNote.Size = UDim2.new(1, -40, 0, 40)
+KeyNote.Position = UDim2.new(0, 20, 0, 70)
+KeyNote.BackgroundTransparency = 1
+KeyNote.Text = "Join our discord to get the key!"
+KeyNote.Font = Enum.Font.Gotham
+KeyNote.TextSize = 14
+KeyNote.TextColor3 = Color3.fromRGB(200, 200, 200)
+KeyNote.TextXAlignment = Enum.TextXAlignment.Left
+KeyNote.TextWrapped = true
+KeyNote.Parent = KeyFrame
+
+-- Discord Button
+local DiscordButton = Instance.new("TextButton")
+DiscordButton.Size = UDim2.new(1, -40, 0, 35)
+DiscordButton.Position = UDim2.new(0, 20, 0, 115)
+DiscordButton.BackgroundColor3 = Color3.fromRGB(88, 101, 242)
+DiscordButton.BorderSizePixel = 0
+DiscordButton.Text = "📋 Get Discord Link"
+DiscordButton.Font = Enum.Font.GothamBold
+DiscordButton.TextSize = 14
+DiscordButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+DiscordButton.Parent = KeyFrame
+
+local DiscordCorner = Instance.new("UICorner")
+DiscordCorner.CornerRadius = UDim.new(0, 10)
+DiscordCorner.Parent = DiscordButton
+
+-- Key Input
+local KeyInput = Instance.new("TextBox")
+KeyInput.Size = UDim2.new(0.65, -10, 0, 35)
+KeyInput.Position = UDim2.new(0, 20, 0, 165)
+KeyInput.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
+KeyInput.BorderSizePixel = 0
+KeyInput.PlaceholderText = "🔑 Enter Key..."
+KeyInput.Font = Enum.Font.Gotham
+KeyInput.TextSize = 14
+KeyInput.TextColor3 = Color3.fromRGB(255, 255, 255)
+KeyInput.Parent = KeyFrame
+
+local KeyInputCorner = Instance.new("UICorner")
+KeyInputCorner.CornerRadius = UDim.new(0, 10)
+KeyInputCorner.Parent = KeyInput
+
+-- Submit Button
+local SubmitButton = Instance.new("TextButton")
+SubmitButton.Size = UDim2.new(0.35, -30, 0, 35)
+SubmitButton.Position = UDim2.new(0.65, 10, 0, 165)
+SubmitButton.BackgroundColor3 = Color3.fromRGB(138, 43, 226)
+SubmitButton.BorderSizePixel = 0
+SubmitButton.Text = "✓ Submit"
+SubmitButton.Font = Enum.Font.GothamBold
+SubmitButton.TextSize = 14
+SubmitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+SubmitButton.Parent = KeyFrame
+
+local SubmitCorner = Instance.new("UICorner")
+SubmitCorner.CornerRadius = UDim.new(0, 10)
+SubmitCorner.Parent = SubmitButton
+
+-- ===============================
+-- BUTTON LOGIC
+-- ===============================
+
+local CORRECT_KEY = "Jcheeks130"
+
+SubmitButton.MouseButton1Click:Connect(function()
+	if KeyInput.Text == CORRECT_KEY then
+		ScreenGui:Destroy()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/zxkuhl/XENO/refs/heads/main/XENO"))()
+	end
+end)
+
+DiscordButton.MouseButton1Click:Connect(function()
+	if setclipboard then
+		setclipboard("https://discord.gg/KPUPp4m9pJ")
+	end
+end)
